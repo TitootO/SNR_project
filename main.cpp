@@ -10,12 +10,12 @@ const int snr[N] = { -42, -38, -25, -17, -33, -45, -29, -12, -36, -41, -22, 30 }
 const char* quality_label(int value)
 {
     if (value >= QUALITY_GOOD)
-        return "Отличный";
+        return "РћС‚Р»РёС‡РЅС‹Р№";
     if (value >= QUALITY_OK)
-        return "Нормальный";
+        return "РќРѕСЂРјР°Р»СЊРЅС‹Р№";
     if (value >= 0)
-        return "Слабый";
-    return "Плохой";
+        return "РЎР»Р°Р±С‹Р№";
+    return "РџР»РѕС…РѕР№";
 }
 
 int main()
@@ -47,23 +47,23 @@ int main()
 
     const char* cell_result;
     if (count_bad == 0 && avg >= QUALITY_GOOD)
-        cell_result = "отличная";
+        cell_result = "РѕС‚Р»РёС‡РЅР°СЏ";
     else if (count_bad == 0)
-        cell_result = "рабочая, проблемных клиентов нет";
+        cell_result = "СЂР°Р±РѕС‡Р°СЏ, РїСЂРѕР±Р»РµРјРЅС‹С… РєР»РёРµРЅС‚РѕРІ РЅРµС‚";
     else if (count_bad <= 3)
-        cell_result = "рабочая, но есть проблемные клиенты";
+        cell_result = "СЂР°Р±РѕС‡Р°СЏ, РЅРѕ РµСЃС‚СЊ РїСЂРѕР±Р»РµРјРЅС‹Рµ РєР»РёРµРЅС‚С‹";
     else
-        cell_result = "требует внимания: много проблемных клиентов";
+        cell_result = "С‚СЂРµР±СѓРµС‚ РІРЅРёРјР°РЅРёСЏ: РјРЅРѕРіРѕ РїСЂРѕР±Р»РµРјРЅС‹С… РєР»РёРµРЅС‚РѕРІ";
 
-    printf("======== Отчёт по соте Wi-Fi (N=%d) ========\n\n", N);
-    printf("Минимальный SNR : %d дБ (клиент %02d) — %s\n",
+    printf("======== РћС‚С‡С‘С‚ РїРѕ СЃРѕС‚Рµ Wi-Fi (N=%d) ========\n\n", N);
+    printf("РњРёРЅРёРјР°Р»СЊРЅС‹Р№ SNR : %d РґР‘ (РєР»РёРµРЅС‚ %02d) вЂ” %s\n",
         snr[imin], imin, quality_label(snr[imin]));
-    printf("Максимальный SNR: %d дБ (клиент %02d) — %s\n",
+    printf("РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ SNR: %d РґР‘ (РєР»РёРµРЅС‚ %02d) вЂ” %s\n",
         snr[imax], imax, quality_label(snr[imax]));
-    printf("Средний SNR : %.2f дБ\n\n", avg);
-    printf("Клиентов с SNR >= %d дБ : %d\n", QUALITY_GOOD, count_good);
-    printf("Клиентов с SNR >= %d дБ : %d\n", QUALITY_OK, count_ok);
-    printf("Клиентов с SNR <  %d дБ : %d\n\n", QUALITY_OK, count_bad);
-    printf("Разброс (max-min) : %d дБ\n", spread);
-    printf("Оценка соты: %s\n", cell_result);
+    printf("РЎСЂРµРґРЅРёР№ SNR : %.2f РґР‘\n\n", avg);
+    printf("РљР»РёРµРЅС‚РѕРІ СЃ SNR >= %d РґР‘ : %d\n", QUALITY_GOOD, count_good);
+    printf("РљР»РёРµРЅС‚РѕРІ СЃ SNR >= %d РґР‘ : %d\n", QUALITY_OK, count_ok);
+    printf("РљР»РёРµРЅС‚РѕРІ СЃ SNR <  %d РґР‘ : %d\n\n", QUALITY_OK, count_bad);
+    printf("Р Р°Р·Р±СЂРѕСЃ (max-min) : %d РґР‘\n", spread);
+    printf("РћС†РµРЅРєР° СЃРѕС‚С‹: %s\n", cell_result);
 }
